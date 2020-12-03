@@ -72,21 +72,25 @@ export class LoginComponent implements OnInit {
 
           }
           else {
+            this.message=data.data.message
+
             this.toastr.error("Incorrect Credentials");
 
-            this.message=data.data.message
 
            }
 
         }
         else {
           this.toastr.error("Incorrect Credentials");
+          this.message = "Incorrect Credentials";
 
         }
             
        },
        (err: HttpErrorResponse) => {
-          console.log(err.message);    // Show error, if any.
+         console.log(err.message);
+         this.message = "Incorrect Credentials";
+         // Show error, if any.
         });
       
     

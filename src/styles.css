@@ -7,6 +7,9 @@ label {
     width: 140px;
     text-align: right;
   }​
+
+
+tr:nth-child(even) {background-color: lightgray;}
 a,
 a label {
     cursor: pointer;

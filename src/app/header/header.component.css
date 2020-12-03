@@ -1,4 +1,13 @@
 a,
 a label {
     cursor: pointer;
+    font-weight: 700;
+}
+a:hover{
+    color: black;
+}
+.navlink
+{
+    padding-left: 40px;
+    padding-right: 40px;
 }
