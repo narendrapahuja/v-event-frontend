@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { ToastrService } from 'ngx-toastr';
 
  @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
   public  password: string;
   public  message: string;
   constructor(
-        private router: Router,public http: HttpClient
+        private router: Router,private toastr: ToastrService,public http: HttpClient
   ) {
        
   }
@@ -54,6 +55,8 @@ export class LoginComponent implements OnInit {
       this.http.post<any>(environment.Base_url + '/user/login', JSON.stringify(logindata), {
         headers: headers
       }).subscribe(data => {
+        console.log(data)
+
         if (data != undefined) {
           this.message = "failure";
           console.log(data)
@@ -62,15 +65,22 @@ export class LoginComponent implements OnInit {
             sessionStorage.setItem("auth_token", data.data.auth_token);
             sessionStorage.setItem("user_id", data.data.user.userId);
             sessionStorage.setItem("loggedIn", 'true');
+            this.message=data.data.message
+            this.toastr.success("Login Success");
 
             this.router.navigate(['home']);
-            
+
           }
           else {
+            this.toastr.error("Incorrect Credentials");
 
             this.message=data.data.message
 
            }
+
+        }
+        else {
+          this.toastr.error("Incorrect Credentials");
 
         }
             

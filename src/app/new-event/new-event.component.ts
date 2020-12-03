@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { environment } from 'src/environments/environment';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { environment } from 'src/environments/environment';
 })
 export class NewEventComponent implements OnInit {
   groupId: string;
-  constructor(  public http: HttpClient,private router: Router,
+  constructor(  public http: HttpClient,private router: Router,private toastr: ToastrService,
     public route: ActivatedRoute) {
  
     this. groupId = this.route.snapshot.paramMap.get('id');
@@ -59,14 +60,17 @@ export class NewEventComponent implements OnInit {
           this.message = "failure";
         
           if (data.status == 201) {
-             this.message = "event creation success";
+            this.message = "event creation success";
+            this.toastr.success(this.message);
+
             this.router.navigate(['home']);
             
           }
           else {
  
             this.message = data.data.message;
- 
+            this.toastr.error(this.message);
+
            }
  
         }

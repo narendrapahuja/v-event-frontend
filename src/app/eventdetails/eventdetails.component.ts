@@ -103,9 +103,10 @@ export class EventdetailsComponent implements OnInit {
 
 
   }
-  goToLink(url){
-    window.open(url, "_blank");
-}
+  goToURL() {
+    window.open(this.eventResult.eventLink, "_blank");
+
+ }
 
  
 }

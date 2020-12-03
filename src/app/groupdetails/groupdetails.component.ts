@@ -3,6 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { ViewChild, ElementRef} from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 interface EventList {
   eventId: string;
@@ -13,6 +15,7 @@ interface EventList {
   eventLink: string; 
   eventMeetupGroupId: string; 
   eventTime: string; 
+
    
 }
 @Component({
@@ -26,13 +29,14 @@ export class GroupdetailsComponent implements OnInit {
   participantEmailId: string;
   enableDeleteGroup: boolean=false;
   public groupEventList: EventList[] = []
-  
+  public message: string=''; 
+
+  @ViewChild('closepopup') closepopup: ElementRef;
 
    
-  closeResult: string;
+ 
 
-
-  constructor(   private modalService: NgbModal
+  constructor(   private toastr: ToastrService, private modalService: NgbModal
 ,    public http: HttpClient,private router: Router,
     public route: ActivatedRoute) {
  
@@ -70,15 +74,7 @@ export class GroupdetailsComponent implements OnInit {
     });
   }
   
-  // private getDismissReason(reason: any): string {
-  //   if (reason === ModalDismissReasons.ESC) {
-  //     return 'by pressing ESC';
-  //   } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-  //     return 'by clicking on a backdrop';
-  //   } else {
-  //     return  `with: ${reason}`;
-  //   }
-  // }
+  
 
   deleteGroup()  
   {
@@ -151,19 +147,26 @@ export class GroupdetailsComponent implements OnInit {
         }).subscribe(data => {
           if (data != undefined) {
             console.log(data);
-               // this.router.navigate(['/home']);
-             }
+            document.getElementById('closepopup').click();
+            //  this.closepopup.nativeElement.click();
+            this.message = data.message
+            console.log(this.message);
+            this.participantEmailId = '';
+             this.toastr.success(this.message);
+              }
             else {
    
-              
-             // this.message=data.data.message
-   
+              this.message=data.message
+              this.toastr.success(this.message);
+    
              }
    
            
               
          },
-         (err: HttpErrorResponse) => {
+          (err: HttpErrorResponse) => {
+            this.toastr.error('error');
+
             console.log(err.message);    // Show error, if any.
           });
         

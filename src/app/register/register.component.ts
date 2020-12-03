@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { environment } from 'src/environments/environment';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,7 @@ export class RegisterComponent implements OnInit {
   firstName: string='';
   lastName: string='';
   message: string='';
-    constructor(        private router: Router,public http: HttpClient
+    constructor(     private toastr: ToastrService,   private router: Router,public http: HttpClient
       ) {}
 
   ngOnInit(): void {
@@ -48,13 +49,14 @@ export class RegisterComponent implements OnInit {
           if (data.status == 201) {
             console.log(data)
             this.message = "Registration success";
+            this.toastr.success(this.message);
             this.router.navigate(['login']);
             
           }
           else {
 
             this.message=data.data.message
-
+            this.toastr.error(this.message);
            }
 
         }

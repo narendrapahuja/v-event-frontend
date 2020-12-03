@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   loggedin: boolean = false;
-  constructor(private router:Router) { }
+  constructor(public router:Router) { }
 
   ngOnInit(): void {
 

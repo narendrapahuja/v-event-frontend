@@ -86,7 +86,7 @@
             <div class="col-sm">
               <br>
               <br>
-              <button (click)="open(mymodal)" class="btn btn-primary">
+              <button *ngIf="enableDeleteGroup" (click)="open(mymodal)" class="btn btn-primary">
                     
                  Add Particpant
               </button>        </div>
@@ -100,19 +100,22 @@
 
         
       </div>
+      <br>
+      <br>
+      <br>
    </div>
 
      
 <ng-template #mymodal let-modal>
   <div class="modal-header">
     <h4 class="modal-title" >Add Participant</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+    <button type="button" class="close" aria-label="Close"  id="closepopup" (click)="modal.dismiss()">
       <span aria-hidden="true">X</span>
     </button>
   </div>
   <div class="modal-body">
     <div class="form-group">
-      <label for="participantEmailId">participantEmailId  </label>
+      <label for="participantEmailId">Participant EmailId  </label>
       &nbsp;
       &nbsp;
       &nbsp;
@@ -121,10 +124,13 @@
   
    </div>
   <div class="modal-footer">
-    <button (click)="addParticipant()" class="btn btn-primary">
+
+<span  >{{message}}</span>
+    <button *ngIf="enableDeleteGroup" (click)="addParticipant()" class="btn btn-primary">
                     
       Add Particpant
    </button>     
+   
     <!-- <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button> -->
   </div>
 </ng-template>

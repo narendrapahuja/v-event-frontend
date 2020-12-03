@@ -6,7 +6,7 @@
 
 .mat-form-field {
   width: 100%;
-  min-width: 300px;
+  min-width: 500px;
 }
 
 mat-card-title,
@@ -14,18 +14,13 @@ mat-card-content {
   display: flex;
   justify-content: center;
 }
-
-.error {
-  padding: 16px;
-  width: 300px;
-  color: white;
-  background-color: red;
-}
+ 
 
 .button {
   display: flex;
   justify-content: flex-end;
-}.login-container {
+}
+.login-container {
   height: 100%;
   width: 100%;
   align-items: center;
@@ -37,7 +32,7 @@ form {
 }
 
 .login-content {
-  width: 400px;
+  width: 500px;
   display: block;
   margin: 0 auto;
 }
@@ -53,5 +48,5 @@ form {
 
 .mat-raised-button {
   width: 100%;
-  margin-top: 15px;
+  margin-top: 10px;
 }

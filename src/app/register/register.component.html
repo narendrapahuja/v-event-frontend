@@ -2,25 +2,34 @@
   <h4 class="card-header">Register</h4>
   <div class="card-body">
            <div class="form-group">
-              <label for="username">EmailId  </label>
+              <label for="username">Email Id  </label>
+              &nbsp;
+              &nbsp;
+              &nbsp;               
+
               <input    [(ngModel)]="emailId" autocomplete="off">
           </div>
           <div class="form-group">
             <label for="username">FirstName  </label>
+            &nbsp;
+
             <input  [(ngModel)]="firstName" autocomplete="off">
         </div>
         <div class="form-group">
           <label for="username">LastName  </label>
+          &nbsp;
+
           <input    [(ngModel)]="lastName" autocomplete="off">
       </div>
           <div class="form-group">
               <label for="password">Password  </label>
+              &nbsp;
+
               <input  [(ngModel)]="password" autocomplete="off">
 
           </div>
           <div class="form-group">
               <button (click)="onSubmit()" class="btn btn-primary">
-                  
                   Register
               </button>
               <a routerLink="../login" class="btn btn-link">Login</a>

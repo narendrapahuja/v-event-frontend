@@ -1,13 +1,19 @@
 <div class="card">
-  <h4 class="card-header">Login</h4>
+  <h4 class="card-header">Log In</h4>
   <div class="card-body">
            <div class="form-group">
-              <label for="username">Username</label>
-              <input    [(ngModel)]="username" autocomplete="off">
+              <label for="username">User Name</label>
+              &nbsp;
+              &nbsp;
+             
+               <input    [(ngModel)]="username" autocomplete="off">
           </div>
           <div class="form-group">
               <label for="password">Password</label>
-              <input    [(ngModel)]="password" autocomplete="off">
+              &nbsp;
+              &nbsp;
+              &nbsp;
+              <input   type="password" [(ngModel)]="password" autocomplete="off">
 
           </div>
           <div class="form-group">
@@ -17,6 +23,5 @@
               </button>
               <a routerLink="../register" class="btn btn-link">Register</a>
           </div>
-          <span class="alert">{{message}}</span>
    </div>
 </div>

@@ -22,6 +22,8 @@ import {MatCardModule} from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 // import { ReactiveFormsModule } from '@angular/forms';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 
  import { CommonModule } from '@angular/common';
@@ -68,7 +70,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     MatCheckboxModule,
     CommonModule,RouterModule,
     HttpClientModule, NgbModule,
-    
+    BrowserAnimationsModule,
+
+    ToastrModule.forRoot()
   ],
   
   providers: [],

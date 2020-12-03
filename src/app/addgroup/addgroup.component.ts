@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
+import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-addgroup',
@@ -9,7 +10,7 @@ import { environment } from 'src/environments/environment';
 })
 export class AddgroupComponent implements OnInit {
 
-  constructor(        private router: Router,public http: HttpClient
+  constructor(       private toastr: ToastrService,  private router: Router,public http: HttpClient
     ) {}
 
   ngOnInit(): void {
@@ -42,13 +43,15 @@ export class AddgroupComponent implements OnInit {
          if (data.status == 201) {
            console.log(data)
            this.message = "group creation success";
+           this.toastr.success(this.message);
+
            this.router.navigate(['home']);
            
          }
          else {
 
            this.message=data.data.message
-
+            this.toastr.error(this.message);
           }
 
        }
