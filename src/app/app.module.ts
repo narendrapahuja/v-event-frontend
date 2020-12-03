@@ -27,10 +27,14 @@ import { FormsModule } from '@angular/forms';
  import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { NewGroupComponent } from './new-group/new-group.component';
+import { AddgroupComponent } from './addgroup/addgroup.component';
+import { GroupdetailsComponent } from './groupdetails/groupdetails.component';
+import { EventdetailsComponent } from './eventdetails/eventdetails.component';
+import { MeetupgroupsComponent } from './meetupgroups/meetupgroups.component';
 
 
- 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
  @NgModule({
   declarations: [
     AppComponent,
@@ -41,8 +45,11 @@ import { NewGroupComponent } from './new-group/new-group.component';
      HeaderComponent,
     LoginComponent,
      FooterComponent,
-     NewGroupComponent,
-    
+     AddgroupComponent,
+     GroupdetailsComponent,
+     EventdetailsComponent,
+     MeetupgroupsComponent,
+     
 
   ],
   imports: [FormsModule,
@@ -60,7 +67,8 @@ import { NewGroupComponent } from './new-group/new-group.component';
     MatCardModule,
     MatCheckboxModule,
     CommonModule,RouterModule,
-    HttpClientModule,
+    HttpClientModule, NgbModule,
+    
   ],
   
   providers: [],

@@ -1,0 +1,57 @@
+<div class="card">
+    
+    <div class="container">
+       
+      <br>
+      <br>
+
+        <div class="row">
+
+        
+            <div class="col-sm-9">
+               <div class="card">
+                <div class="card-header card-header-info">
+                  <h4 class="card-title "> Groups</h4>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class='table table-hover'>
+                      <thead class=" text-primary">
+                        <tr>
+                          <th>Group Name</th>
+                          
+                         
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let row of groupList">
+                         
+                          <td> 
+                            <a (click)="viewGroup(row)">
+                              <span class="badge">  {{row.groupName }} </span> 
+                            </a>
+                           </td>
+                          
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-2">
+
+              <br>
+  
+          <br>
+
+
+              <button (click)="newGroup()" class="btn btn-primary">
+                  
+                new Group
+            </button>
+            </div>
+             
+          </div>
+      </div>
+   </div>

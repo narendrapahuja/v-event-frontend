@@ -8,21 +8,42 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
+  loggedin: boolean = false;
   constructor(private router:Router) { }
 
   ngOnInit(): void {
+
+    if (sessionStorage.getItem("loggedIn") == 'true') {
+      this.loggedin=true;
+
+    }
+    else{
+      this.loggedin=false;
+
+    }
   }
   redirectToHome() { 
 
-    this.router.navigate(['index']);
+    this.router.navigate(['home']);
+  }
+
+  logout() { 
+    sessionStorage.setItem("loggedIn", 'false');
+
+    sessionStorage.clear();
+    this.router.navigate(['/login']);
   }
   redirectToLogin() { 
 
-    this.router.navigate(['login']);
+    this.router.navigate(['/login']);
   }
   redirectToRegister() { 
 
-    this.router.navigate(['Register']);
+    this.router.navigate(['/Register']);
   }
+  redirectToMeetupGroups() { 
+
+    this.router.navigate(['/meetupgroups']);
+  }
+  
 }

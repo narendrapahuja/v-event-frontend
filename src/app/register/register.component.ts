@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { environment } from 'src/environments/environment';
@@ -13,17 +13,17 @@ export class RegisterComponent implements OnInit {
   password: string='';
   firstName: string='';
   lastName: string='';
+  message: string='';
     constructor(        private router: Router,public http: HttpClient
       ) {}
 
   ngOnInit(): void {
   }
 
-   onSubmit() {
-    var valid = true;
-     console.log(this.emailId + this.password + this.firstName + this.lastName);
+
+  onSubmit() {
+     var valid = true;
      
-         
     var registerData ={
       "emailId":this.emailId,
       "firstName":this.firstName,
@@ -31,30 +31,48 @@ export class RegisterComponent implements OnInit {
       "password":this.password
     };
       // reset alerts on submit
-      if (valid == true)
-      {
-      
-        
-  
-      this.http.post<any>(environment.Base_url + '/user/register',registerData).subscribe(data => {
-       
-        console.log(data);
+    if (valid == true)
+    {
+    
+ 
+      const headers = new HttpHeaders()
+      // .set('Authorization', 'my-auth-token')
+      .set('Content-Type', 'application/json');
 
-        if (data.Authenticated == "true")
-        
-         {  this.router.navigate(['login']);
+      this.http.post<any>(environment.Base_url + '/user/register', JSON.stringify(registerData), {
+        headers: headers
+      }).subscribe(data => {
+        if (data != undefined) {
+          this.message = "failure";
+          console.log(data)
+          if (data.status == 201) {
+            console.log(data)
+            this.message = "Registration success";
+            this.router.navigate(['login']);
             
-         }
+          }
+          else {
+
+            this.message=data.data.message
+
+           }
+
+        }
             
        },
        (err: HttpErrorResponse) => {
           console.log(err.message);    // Show error, if any.
         });
-       
-  
-      }
+      
     
+     
+
+    }
+     
+   
+    
+
            
   }
-
+  
 }

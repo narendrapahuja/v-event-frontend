@@ -1,4 +1,8 @@
- import { NgModule } from '@angular/core';
+import { AddgroupComponent } from './addgroup/addgroup.component';
+import { MeetupgroupsComponent } from './meetupgroups/meetupgroups.component';
+import { EventdetailsComponent } from './eventdetails/eventdetails.component';
+import { GroupdetailsComponent } from './groupdetails/groupdetails.component';
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
@@ -7,8 +11,7 @@ import { RegisterComponent } from './register/register.component';
  
 import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
-import { NewGroupComponent } from './new-group/new-group.component';
- const routes: Routes =[
+   const routes: Routes =[
   {
     path: 'login',
     component:LoginComponent,
@@ -19,24 +22,22 @@ import { NewGroupComponent } from './new-group/new-group.component';
    },
    {
     path: '',
-    component:HomeComponent,
+    component:LoginComponent,
   },
-  {
-    path: 'new-event',
-    component:NewEventComponent,
-  },
+  
   {
     path: 'register',
     component:RegisterComponent,
   },
-  
-  {
-    path: 'newgroup',
-    component:NewGroupComponent,
-  },
-  
+  { path: 'groupdetails/:id', component: GroupdetailsComponent },
+
+  { path: 'newevent/:id', component: NewEventComponent },
+
    
-   
+  { path: 'eventdetails/:id', component: EventdetailsComponent },
+  { path: 'meetupgroups', component: MeetupgroupsComponent },
+  { path: 'addgroup', component: AddgroupComponent },
+  
  ];
 @NgModule({  
   imports: [

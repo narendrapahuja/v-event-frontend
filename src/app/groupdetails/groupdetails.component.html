@@ -1,0 +1,130 @@
+<div class="card">
+    
+    <div class="container">
+        <div class="row">
+
+          <div class="col-sm">
+            <div class="row">
+              <div class="col-sm-8">
+              <br>
+              <table>
+                  <tr>
+                     <td>
+                        Group name:
+                     </td> 
+
+                     <td>
+                        {{ groupResult.groupName }}
+                    </td> 
+                  </tr>
+
+                  <tr>
+                    <td>
+                    Group Description:
+                    </td> 
+
+                    <td>
+                       {{groupResult.groupDescription }}
+                   </td> 
+                 </tr>
+
+               
+              </table>
+
+            </div>
+
+            <div class="col-sm">
+              <br>
+              <button *ngIf="enableDeleteGroup" (click)="deleteGroup()" class="btn btn-primary">
+                    
+               Delete Group
+             </button>  
+
+            </div>
+          </div>
+       
+        <br>
+        <div class="row">
+          <div class="col-sm-8">
+          <div class="card">
+            <div class="card-header card-header-info">
+              <h4 class="card-title ">Events</h4>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class='table table-hover'>
+                  
+                  <tbody>
+                    <tr *ngFor="let row of groupEventList">
+                     
+                      <td> 
+                        <a (click)="viewEvent(row)">
+                          <span class="badge">  {{row.eventName }} </span> 
+                        </a>
+                       </td>
+
+                       
+                      
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+          <div class="col-sm">
+            <br>
+            <br>
+            <button (click)="newEvent()" class="btn btn-primary">
+                  
+                New Event
+            </button>        </div>
+
+
+            <div class="col-sm">
+              <br>
+              <br>
+              <button (click)="open(mymodal)" class="btn btn-primary">
+                    
+                 Add Particpant
+              </button>        </div>
+        </div>
+
+
+        </div>
+            
+          </div>
+      
+
+        
+      </div>
+   </div>
+
+     
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" >Add Participant</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+      <span aria-hidden="true">X</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="participantEmailId">participantEmailId  </label>
+      &nbsp;
+      &nbsp;
+      &nbsp;
+      <input    [(ngModel)]="participantEmailId" autocomplete="off">
+  </div>
+  
+   </div>
+  <div class="modal-footer">
+    <button (click)="addParticipant()" class="btn btn-primary">
+                    
+      Add Particpant
+   </button>     
+    <!-- <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button> -->
+  </div>
+</ng-template>

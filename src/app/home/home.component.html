@@ -3,33 +3,117 @@
     <div class="container">
         <div class="row">
 
-          <div class="col-sm">
-            <div class="row">
-                <h4>All Events</h4>
-            </div>
+          <div class="col-sm-9"> 
+                <!-- <h4>All Events</h4> -->
 
+                <div class="card">
+                  <div class="card-header card-header-info">
+                    <h4 class="card-title ">All Events</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class='table table-hover'>
+                        <thead class=" text-primary">
+                          <tr>
+                            <th>Event Name</th>
+                            
+                           
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let row of userEventList">
+                            <td> 
+                              <a (click)="viewEvent(row)">
+                                <span class="badge">  {{row.eventName }} </span> 
+                              </a>
+                             </td>
+      
+                            
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+
+          
             
           </div>
       
-           
-        </div>
-
-
-        <div class="row">
-
-            <div class="col-sm">
-        
-  
-              <div class="row">
-                  <h4>Your Events</h4>
-  
+          <div class="col-sm-3">
+            <!-- <h4>Your Groups</h4> -->
+            <div class="card">
+              <div class="card-header card-header-info">
+                <h4 class="card-title ">Your Groups</h4>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class='table table-hover'>
+                    <thead class=" text-primary">
+                      <tr>
+                        <th>Group Name</th>
+                        
+                       
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let row of userGroupList">
+                       
+                        <td> 
+                          <a (click)="viewGroup(row)">
+                            <span class="badge">  {{row.groupName }} </span> 
+                          </a>
+                         </td>
+                        
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
-            <div class="col-sm">
-              <h4>Your Groups</h4>
-  
-            </div>
-             
           </div>
+      </div>
+       
+      <div class="row">
+
+        <div class="col-sm-9">
+    
+
+              <!-- <h4>Your Events</h4> -->
+              <div class="card">
+                <div class="card-header card-header-info">
+                  <h4 class="card-title ">Your Events</h4>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class='table table-hover'>
+                      <thead class=" text-primary">
+                        <tr>
+                          <th>Event Name</th>
+                          
+                         
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let row of userCreatedEventList">
+                          <td> 
+                            <a (click)="viewEvent(row)">
+                              <span class="badge">  {{row.eventName }} </span> 
+                            </a>
+                           </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+        </div>
+     
+         
+      </div>
+
+
       </div>
    </div>

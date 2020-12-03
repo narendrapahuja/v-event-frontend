@@ -1,0 +1,86 @@
+<div class="card">
+    
+    <div class="container">
+        <div class="row">
+
+          <div class="col-sm">
+            <div class="row">
+
+              
+              <table>
+                  <tr>
+                     <td>
+                        event Name:
+                     </td> 
+
+                     <td>
+                        {{ eventResult.eventName }}
+                    </td> 
+                  </tr>
+
+                  <tr>
+                    <td>
+                      event Description:
+                    </td> 
+
+                    <td>
+                       {{eventResult.eventDescription }}
+                   </td> 
+                 </tr>
+
+
+                 <tr>
+                    <td>
+                        event Date:
+                    </td> 
+
+                    <td>
+                       {{eventResult.eventDate }}
+                   </td> 
+                 </tr>
+
+                 <tr>
+                    <td>
+                        event Time:
+                    </td> 
+
+                    <td>
+                       {{eventResult.eventTime }}
+                   </td> 
+                 </tr>
+
+               
+
+              
+              </table>
+
+            </div>
+
+       
+        <br>
+      
+            
+          </div>
+          <div class="col-sm">
+            <br>
+            <br>
+
+            <a href="goToURL(eventResult.eventLink)" >
+            <button   class="btn btn-primary">
+                  Join Event
+            </button>
+          </a>
+
+          <button  *ngIf="enableDeleteEvent" (click)="deleteEvent()" class="btn btn-primary">
+           Delete Event
+      </button>
+          </div>
+
+       
+
+
+        
+      </div>
+   </div> 
+   </div>
+ 

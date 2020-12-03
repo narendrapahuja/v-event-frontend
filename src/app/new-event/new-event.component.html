@@ -1,3 +1,37 @@
  
 
- 
+ <div class="card">
+    <h4 class="card-header">Create Event</h4>
+    <div class="card-body">
+             <div class="form-group">
+                <label for="eventName">eventName  </label>
+                <input    [(ngModel)]="eventName" autocomplete="off">
+            </div>
+
+            <div class="form-group">
+                <label for="eventDescription">eventDescription  </label>
+                <input    [(ngModel)]="eventDescription" autocomplete="off">
+            </div>
+            <div class="form-group">
+              <label for="eventDate">eventDate  </label>
+              <input  [(ngModel)]="eventDate" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="eventTime">eventTime  </label>
+            <input    [(ngModel)]="eventTime" autocomplete="off">
+        </div>
+            <div class="form-group">
+                <label for="eventTime">eventLink  </label>
+                <input  [(ngModel)]="eventLink" autocomplete="off">
+  
+            </div>
+            <div class="form-group">
+                <button (click)="onSubmit()" class="btn btn-primary">
+                    
+                    Create Event
+                </button>
+             </div>
+            <span class="alert">{{message}}</span>
+  
+     </div>
+  </div>
