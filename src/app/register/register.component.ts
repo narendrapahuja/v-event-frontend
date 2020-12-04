@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
       // .set('Authorization', 'my-auth-token')
       .set('Content-Type', 'application/json');
 
-      this.http.post<any>(environment.Base_url + '/user/register', JSON.stringify(registerData), {
+      this.http.post<any>(environment.Base_url + '/user/register', registerData, {
         headers: headers
       }).subscribe(data => {
         if (data != undefined) {
