@@ -64,6 +64,8 @@ export class LoginComponent implements OnInit {
             console.log(data)
             sessionStorage.setItem("auth_token", data.data.auth_token);
             sessionStorage.setItem("user_id", data.data.user.userId);
+            sessionStorage.setItem("firstName", data.data.user.firstName);
+
             sessionStorage.setItem("loggedIn", 'true');
             this.message=data.data.message
             this.toastr.success("Login Success");

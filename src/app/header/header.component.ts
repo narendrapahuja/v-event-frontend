@@ -10,8 +10,9 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
   loggedin: boolean = false;
   constructor(public router:Router) { }
-
+  firstName: string = '';
   ngOnInit(): void {
+    this. firstName = sessionStorage.getItem("firstName");
 
     if (sessionStorage.getItem("loggedIn") == 'true') {
       this.loggedin=true;
